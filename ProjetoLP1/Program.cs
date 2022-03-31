@@ -7,7 +7,7 @@ namespace ProjectLP1
 
         public int RandNum(int x, int y) => rnd.Next(x, y);
 
-        public Perguntar ao stor BoardCreation()
+        public int[][] BoardCreation()
         {
             int [][] board  = new int [5][];
             board [4] = new int [] {0, 0, 0, 0, 0};
@@ -44,42 +44,42 @@ namespace ProjectLP1
 
             board [snake_c][snake_l] = 2;
 
-            While (board [ladders_c][ladders_l] != 0)
+            while (board [ladders_c][ladders_l] != 0)
             {
                 ladders_c = rnd.Next(0, 5);
                 ladders_l = rnd.Next(0, 4);
             }
             board [ladders_c][ladders_l] = 3;
 
-            While (board [Cobra_c][Cobra_l] != 0)
+            while (board [Cobra_c][Cobra_l] != 0)
             {
                 Cobra_c = rnd.Next(0, 5);
                 Cobra_l = rnd.Next(2, 5);
             }
             board [Cobra_c][Cobra_l] = 4;
 
-            While (board [Boost_c][Boost_l] != 0)
+            while (board [Boost_c][Boost_l] != 0)
             {
                 Boost_c = rnd.Next(0, 5);
                 Boost_l = rnd.Next(0, 4);
             }
             board [Boost_c][Boost_l] = 5;
 
-            While (board [Boost_c][Boost_l] != 0)
+            while (board [Boost_c][Boost_l] != 0)
             {
                 UTurn_c = rnd.Next(0, 5);
                 UTurn_l = rnd.Next(1, 5);
             }
             board [UTurn_c][UTurn_l] = 6;
 
-            While (board [ExtraDie_c][ExtraDie_l] != 0)
+            while (board [ExtraDie_c][ExtraDie_l] != 0)
             {
                 ExtraDie_c = rnd.Next(0, 5);
                 ExtraDie_l = rnd.Next(0, 5);
             }
             board [ExtraDie_c][ExtraDie_l] = 7;
 
-            While (board [CheatDie_c][CheatDie_l] != 0)
+            while (board [CheatDie_c][CheatDie_l] != 0)
             {
                 CheatDie_c = rnd.Next(0, 5);
                 CheatDie_l = rnd.Next(0, 5);
