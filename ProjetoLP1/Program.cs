@@ -5,7 +5,7 @@ namespace ProjectLP1
     class Program
     {
 
-        public int RandNum(int x, int y)
+        private int RandNum(int x, int y)
         {
             Random rnd = new Random();
             int num =rnd.Next(x, y);
@@ -13,7 +13,7 @@ namespace ProjectLP1
         }
         public int [][] board;
 
-        public int[][] BoardCreation()
+        private int[][] BoardCreation()
         {
             board  = new int [5][];
             board [4] = new int [] {0, 0, 0, 0, 0};
@@ -97,7 +97,7 @@ namespace ProjectLP1
 
 
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             BoardCreation();
             int player_pos = 0;
