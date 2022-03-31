@@ -5,7 +5,7 @@ namespace ProjectLP1
     class Program
     {
 
-        private int RandNum(int x, int y)
+        private static int RandNum(int x, int y)
         {
             Random rnd = new Random();
             int num =rnd.Next(x, y);
@@ -13,7 +13,7 @@ namespace ProjectLP1
         }
         public int [][] board;
 
-        private int[][] BoardCreation()
+        private static int[][] BoardCreation()
         {
             board  = new int [5][];
             board [4] = new int [] {0, 0, 0, 0, 0};
@@ -22,7 +22,6 @@ namespace ProjectLP1
             board [1] = new int [] {0, 0, 0, 0, 0};
             board [0] = new int [] {0, 0, 0, 0, 0};
 
-            Random rnd = new Random();
 
             board[0][0] = 1;
             board[5][5] = 1;
@@ -99,6 +98,8 @@ namespace ProjectLP1
 
         private static void Main(string[] args)
         {
+
+            //Board board = new Board();
             BoardCreation();
             int player_pos = 0;
             int dice = RandNum(1, 7);
