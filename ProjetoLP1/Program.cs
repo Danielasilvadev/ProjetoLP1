@@ -4,16 +4,30 @@ namespace ProjectLP1
 {
     class Program
     {
-
-        private int RandNum(int x, int y)
+        /// <summary>
+        /// Metodo que serve para gerar numeros aleatórios, foi criada porque a rnd seria chamada demasiada chamada
+        /// </summary>
+        /// <param name="x">Número minimo do gerador de números aleatório</param>
+        /// <param name="y">Número maximo do gerador de números aleatório</param>
+        /// <returns>Um número aleatório</returns>
+        private static int RandNum(int x, int y)
         {
             Random rnd = new Random();
             int num =rnd.Next(x, y);
             return num;
         }
-        public int [][] board;
 
-        private int[][] BoardCreation()
+        /// <summary>
+        /// Variável que serve como mapa de jogo
+        /// </summary>
+        private static int [][] board;
+
+        /// <summary>
+        /// Este metodo cria a board de jogo com todas as especificações de cada casa e verifica se que
+        /// todas as casas não ficam sobrepostas 
+        /// </summary>
+        /// <returns>Nada, apenas altera a board</returns>
+        private static int [][] BoardCreation()
         {
             board  = new int [5][];
             board [4] = new int [] {0, 0, 0, 0, 0};
@@ -24,7 +38,7 @@ namespace ProjectLP1
 
 
             board[0][0] = 1;
-            board[5][5] = 1;
+            board[4][4] = 1;
 
             int snake_c = RandNum(0, 5);
             int snake_l = RandNum(1, 5);
@@ -94,17 +108,51 @@ namespace ProjectLP1
             return board;
         }
 
+        /// <summary>
+        /// Metodo que é usado de cada vez que se quer lançar um dado
+        /// </summary>
+        /// <param name="player_pos">A posição atual do jogador</param>
+        /// <returns></returns>
+        private static int PlayerMovement(int player_pos)
+        {
+            int dice = RandNum(1, 7);
+            player_pos += dice;
+            return player_pos;
+        }
 
+        /// <summary>
+        /// Metodo que é chamado de cada vez que se quer mostrar ao jogador o estado da board
+        /// </summary>
+        /// <param name="current_position">Posição atual do jogador</param>
+        private static void PrintBoard (int current_position)
+        {
+            for (int i = 10; i > board.Length; i--)
+            {
+                int x = 0;
+
+                for (int j = 0; j < board[x].Length; j++)
+                {
+                    Console.Write($"||{board[i][j]}||");
+                }
+
+                Console.WriteLine(" ");
+                x++;
+            }
+        }
 
         private static void Main(string[] args)
         {
 
-            //Board board = new Board();
-            BoardCreation();
-            int player_pos = 0;
-            int dice = RandNum(1, 7);
-            player_pos += dice;
-            Console.WriteLine($"{board}");
+            Board board = new Board();
+            //Criar a board de jogo
+            Program.BoardCreation();
+            //Os jogadores começam na posição 0
+            int start_position = 0;
+            //Um dado é lançado e a posição do jogador é atualizada
+            int current_position = Program.PlayerMovement(start_position);
+            //A board é imprimida para mostrar onde o jogador está neste turno
+            Program.PrintBoard(current_position);
+
 
         }
     }
